@@ -40,6 +40,40 @@ resultsDiv.style.display = "none";
 errorHeader.style.display = "none";
 
 
+// ####################################
+// BEGIN Code For Testing
+
+let testURL = peopleURL;
+let resultPageCount = 1;
+
+for (let i = 0; i < 3; i++) {
+
+fetch(testURL)
+.then(result => {
+    // console.log(result);
+    return result.json();
+})
+.then(jsonData => {
+    console.log(jsonData);
+    resultPageCount++;
+    testURL = "http://swapi.dev/api/people/?page=" + resultPageCount;
+    console.log(testURL);
+    // testURL = jsonData.next;
+    // displayPeople(jsonData);
+})
+.catch(err => {
+    console.log(err)
+    errorHeader.innerText = err;
+    errorHeader.style.display = 'flex';
+});
+
+};
+
+
+// END Code For Testing
+// ####################################
+
+
 // Get the results after the search
 function getResults(e){
   e.preventDefault();
@@ -465,40 +499,44 @@ function displaySpecies(jsonData){
       let nameP = document.createElement("p");
       nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
 
-      let birthYearP = document.createElement("p");
-      birthYearP.innerHTML = "Birth Year: " + results[i].birth_year;
+      let averageHeightP = document.createElement("p");
+      averageHeightP.innerHTML = "Average Height: " + results[i].average_height;
 
-      let eyeColorP = document.createElement("p");
-      eyeColorP.innerHTML = "Eye Color: " + results[i].eye_color;
+      let averageLifespanP = document.createElement("p");
+      averageLifespanP.innerHTML = "Average Lifespan: " + results[i].average_lifespan;
 
-      let genderP = document.createElement("p");
-      genderP.innerHTML = "Gender: " + results[i].gender;
+      let classificationP = document.createElement("p");
+      classificationP.innerHTML = "Classification: " + results[i].classification;
 
-      let hairColorP = document.createElement("p");
-      hairColorP.innerHTML = "Hair Color: " + results[i].hair_color;
+      let designationP = document.createElement("p");
+      designationP.innerHTML = "Designation: " + results[i].designation;
 
-      let heightP = document.createElement("p");
-      heightP.innerHTML = "Height: " + results[i].height;
+      let eyeColorsP = document.createElement("p");
+      eyeColorsP.innerHTML = "Eye Colors: " + results[i].eye_colors;
 
-      let massP = document.createElement("p");
-      massP.innerHTML = "Mass: " + results[i].mass;
-
-      let skinColorP = document.createElement("p");
-      skinColorP.innerHTML = "Skin Color: " + results[i].skin_color;
+      let hairColorsP = document.createElement("p");
+      hairColorsP.innerHTML = "Hair Colors: " + results[i].hair_colors;
 
       let homeworldP = document.createElement("p");
       homeworldP.innerHTML = "Homeworld: " + results[i].homeworld;
 
+      let languageP = document.createElement("p");
+      languageP.innerHTML = "Language: " + results[i].language;
+
+      let skinColorsP = document.createElement("p");
+      skinColorsP.innerHTML = "Skin Colors: " + results[i].skin_colors;
+
 
       cardBodyDiv.appendChild(nameP);
-      cardBodyDiv.appendChild(birthYearP);
-      cardBodyDiv.appendChild(eyeColorP);
-      cardBodyDiv.appendChild(genderP);
-      cardBodyDiv.appendChild(hairColorP);
-      cardBodyDiv.appendChild(heightP);
-      cardBodyDiv.appendChild(massP);
-      cardBodyDiv.appendChild(skinColorP);
+      cardBodyDiv.appendChild(averageHeightP);
+      cardBodyDiv.appendChild(averageLifespanP);
+      cardBodyDiv.appendChild(classificationP);
+      cardBodyDiv.appendChild(designationP);
+      cardBodyDiv.appendChild(eyeColorsP);
+      cardBodyDiv.appendChild(hairColorsP);
       cardBodyDiv.appendChild(homeworldP);
+      cardBodyDiv.appendChild(languageP);
+      cardBodyDiv.appendChild(skinColorsP);
 
       cardDiv.appendChild(cardBodyDiv);
       resultsRowDiv.appendChild(cardDiv);
@@ -541,40 +579,52 @@ function displayVehicles(jsonData){
       let nameP = document.createElement("p");
       nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
 
-      let birthYearP = document.createElement("p");
-      birthYearP.innerHTML = "Birth Year: " + results[i].birth_year;
+      let MGLTP = document.createElement("p");
+      MGLTP.innerHTML = "MGLT: " + results[i].MGLT;
 
-      let eyeColorP = document.createElement("p");
-      eyeColorP.innerHTML = "Eye Color: " + results[i].eye_color;
+      let cargoCapacityP = document.createElement("p");
+      cargoCapacityP.innerHTML = "Cargo Capacity: " + results[i].cargo_capacity;
 
-      let genderP = document.createElement("p");
-      genderP.innerHTML = "Gender: " + results[i].gender;
+      let consumablesP = document.createElement("p");
+      consumablesP.innerHTML = "Consumables: " + results[i].consumables;
 
-      let hairColorP = document.createElement("p");
-      hairColorP.innerHTML = "Hair Color: " + results[i].hair_color;
+      let costInCreditsP = document.createElement("p");
+      costInCreditsP.innerHTML = "Cost In Credits: " + results[i].cost_in_credits;
 
-      let heightP = document.createElement("p");
-      heightP.innerHTML = "Height: " + results[i].height;
+      let crewP = document.createElement("p");
+      crewP.innerHTML = "Crew: " + results[i].crew;
 
-      let massP = document.createElement("p");
-      massP.innerHTML = "Mass: " + results[i].mass;
+      let lengthP = document.createElement("p");
+      lengthP.innerHTML = "Length: " + results[i].length;
 
-      let skinColorP = document.createElement("p");
-      skinColorP.innerHTML = "Skin Color: " + results[i].skin_color;
+      let manufacturerP = document.createElement("p");
+      manufacturerP.innerHTML = "Manufacturer: " + results[i].manufacturer;
 
-      let homeworldP = document.createElement("p");
-      homeworldP.innerHTML = "Homeworld: " + results[i].homeworld;
+      let maxAtmospheringSpeedP = document.createElement("p");
+      maxAtmospheringSpeedP.innerHTML = "Max Atmosphering Speed: " + results[i].max_atmosphering_speed;
+
+      let modelP = document.createElement("p");
+      modelP.innerHTML = "Model: " + results[i].model;
+
+      let passengersP = document.createElement("p");
+      passengersP.innerHTML = "Passengers: " + results[i].passengers;
+
+      let vehicle_classP = document.createElement("p");
+      vehicle_classP.innerHTML = "Vehicle Class: " + results[i].vehicle_class;
 
 
       cardBodyDiv.appendChild(nameP);
-      cardBodyDiv.appendChild(birthYearP);
-      cardBodyDiv.appendChild(eyeColorP);
-      cardBodyDiv.appendChild(genderP);
-      cardBodyDiv.appendChild(hairColorP);
-      cardBodyDiv.appendChild(heightP);
-      cardBodyDiv.appendChild(massP);
-      cardBodyDiv.appendChild(skinColorP);
-      cardBodyDiv.appendChild(homeworldP);
+      cardBodyDiv.appendChild(MGLTP);
+      cardBodyDiv.appendChild(cargoCapacityP);
+      cardBodyDiv.appendChild(consumablesP);
+      cardBodyDiv.appendChild(costInCreditsP);
+      cardBodyDiv.appendChild(crewP);
+      cardBodyDiv.appendChild(lengthP);
+      cardBodyDiv.appendChild(manufacturerP);
+      cardBodyDiv.appendChild(maxAtmospheringSpeedP);
+      cardBodyDiv.appendChild(modelP);
+      cardBodyDiv.appendChild(passengersP);
+      cardBodyDiv.appendChild(vehicle_classP);
 
       cardDiv.appendChild(cardBodyDiv);
       resultsRowDiv.appendChild(cardDiv);
