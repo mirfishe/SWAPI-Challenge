@@ -7,20 +7,20 @@ const starshipsURL = "https://swapi.dev/api/starships/";
 const speciesURL = "https://swapi.dev/api/species/";
 const vehiclesURL = "https://swapi.dev/api/vehicles/";
 
-const btnFlms = document.getElementById("btnFlms");
+const btnFilms = document.getElementById("btnFilms");
 const btnPeople = document.getElementById("btnPeople");
 const btnPlanets = document.getElementById("btnPlanets");
 const btnStarships = document.getElementById("btnStarships");
 const btnSpecies = document.getElementById("btnSpecies");
 const btnVehicles = document.getElementById("btnVehicles");
 
-// btnFlms.addEventListener('click', getFlms);
+// btnFilms.addEventListener('click', getFlms);
 // btnPeople.addEventListener('click', getPeople); 
 // btnPlanets.addEventListener('click', getPlanets);
 // btnStarships.addEventListener('click', getStarships);
 // btnSpecies.addEventListener('click', getSpecies);
 // btnVehicles.addEventListener('click', getVehicles);
-btnFlms.addEventListener('click', getResults);
+btnFilms.addEventListener('click', getResults);
 btnPeople.addEventListener('click', getResults); 
 btnPlanets.addEventListener('click', getResults);
 btnStarships.addEventListener('click', getResults);
@@ -44,9 +44,11 @@ errorHeader.style.display = "none";
 // BEGIN Code For Testing
 
 let testURL = peopleURL;
-let resultPageCount = 1;
+let resultPageCount = 2;
 
-for (let i = 0; i < 3; i++) {
+testURL = "http://swapi.dev/api/people/?page=" + resultPageCount;
+
+// for (let i = 0; i < 3; i++) {
 
 fetch(testURL)
 .then(result => {
@@ -57,6 +59,7 @@ fetch(testURL)
     console.log(jsonData);
     resultPageCount++;
     testURL = "http://swapi.dev/api/people/?page=" + resultPageCount;
+    // testURL = "http://swapi.dev/api/people/" + resultPageCount; // Not Correct
     console.log(testURL);
     // testURL = jsonData.next;
     // displayPeople(jsonData);
@@ -67,7 +70,7 @@ fetch(testURL)
     errorHeader.style.display = 'flex';
 });
 
-};
+// };
 
 
 // END Code For Testing
@@ -90,12 +93,12 @@ function getResults(e){
 
   let URL = "";
 
-  if (e.srcElement.id === "btnPeople") {
-    URL = peopleURL;
-  };
+  // if (e.srcElement.id === "btnPeople") {
+  //   URL = peopleURL;
+  // };
 
   switch (e.srcElement.id) {
-    case "btnFlms":
+    case "btnFilms":
       URL = filmsURL;
         break;
     case "btnPeople":
@@ -126,7 +129,7 @@ function getResults(e){
       // console.log(jsonData);
 
       switch (e.srcElement.id) {
-        case "btnFlms":
+        case "btnFilms":
           displayFilms(jsonData);
             break;
         case "btnPeople":
