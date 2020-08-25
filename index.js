@@ -27,6 +27,13 @@ btnStarships.addEventListener('click', getResults);
 btnSpecies.addEventListener('click', getResults);
 btnVehicles.addEventListener('click', getResults);
 
+const txtSearch = document.getElementById("txtSearch");
+const ddSearchCategories = document.getElementById("ddSearchCategories");
+
+const btnSearch = document.getElementById("btnSearch");
+const searchForm = document.getElementById("frmSearch");
+searchForm.addEventListener('submit', getResults); 
+
 
 const errorHeader = document.getElementById("errorHeader");
 // const resultsHeader = document.getElementById("h2Results");
@@ -43,43 +50,55 @@ errorHeader.style.display = "none";
 // ####################################
 // BEGIN Code For Testing
 
-let testURL = peopleURL;
-let resultPageCount = 2;
+let runTestCode = false;
+// runTestCode = true;
 
-testURL = "http://swapi.dev/api/people/?page=" + resultPageCount;
+if (runTestCode) {
 
-// for (let i = 0; i < 3; i++) {
+  let testURL = peopleURL;
+  let resultPageCount = 2;
 
-fetch(testURL)
-.then(result => {
-    // console.log(result);
-    return result.json();
-})
-.then(jsonData => {
-    console.log(jsonData);
-    resultPageCount++;
-    testURL = "http://swapi.dev/api/people/?page=" + resultPageCount;
-    // testURL = "http://swapi.dev/api/people/" + resultPageCount; // Not Correct
-    console.log(testURL);
-    // testURL = jsonData.next;
-    // displayPeople(jsonData);
-})
-.catch(err => {
-    console.log(err)
-    errorHeader.innerText = err;
-    errorHeader.style.display = 'flex';
-});
+  testURL = "http://swapi.dev/api/people/?page=" + resultPageCount;
 
-// };
+  // for (let i = 0; i < 3; i++) {
 
+  fetch(testURL)
+  .then(result => {
+      // console.log(result);
+      return result.json();
+  })
+  .then(jsonData => {
+      console.log(jsonData);
+      resultPageCount++;
+      testURL = "http://swapi.dev/api/people/?page=" + resultPageCount;
+      // testURL = "http://swapi.dev/api/people/" + resultPageCount; // Not Correct
+      console.log(testURL);
+      // testURL = jsonData.next;
+      // displayPeople(jsonData);
+  })
+  .catch(err => {
+      console.log(err)
+      errorHeader.innerText = err;
+      errorHeader.style.display = 'flex';
+  });
+
+  // };
+
+};
 
 // END Code For Testing
 // ####################################
 
+let URL = "";
+let searchType = "";
+let searchString = "";
+let currentPage = 0;
+let lastPage = 0;
 
 // Get the results after the search
 function getResults(e){
   e.preventDefault();
+  // console.log(e);
 
   while (resultsDiv.firstChild) { // while the value is not null
     resultsDiv.removeChild(resultsDiv.firstChild);
@@ -91,34 +110,81 @@ function getResults(e){
   // moreDiv.style.display = "none";
   // moreLink.style.display = "none";
 
-  let URL = "";
+  URL = "";
+  searchString = "";
+  
+  currentPage = 0;
+  lastPage = 0;
 
   // if (e.srcElement.id === "btnPeople") {
   //   URL = peopleURL;
   // };
 
-  switch (e.srcElement.id) {
-    case "btnFilms":
-      URL = filmsURL;
-        break;
-    case "btnPeople":
-      URL = peopleURL;
-        break;
-    case "btnPlanets":
-      URL = planetsURL;
-        break;
-    case "btnStarships":
-      URL = starshipsURL;
-        break;
-    case "btnSpecies":
-      URL = speciesURL;
-        break;
-    case "btnVehicles":
-      URL = vehiclesURL;
-        break;
-    default:
-      URL = baseURL;
+  if (e.srcElement.id === "frmSearch") {
+    switch (ddSearchCategories.value) {
+      case "Films":
+        URL = filmsURL;
+        searchType = "films";
+          break;
+      case "People":
+        URL = peopleURL;
+        searchType = "people";
+          break;
+      case "Planets":
+        URL = planetsURL;
+        searchType = "planets";
+          break;
+      case "Starships":
+        URL = starshipsURL;
+        searchType = "starships";
+          break;
+      case "Species":
+        URL = speciesURL;
+        searchType = "species";
+          break;
+      case "Vehicles":
+        URL = vehiclesURL;
+        searchType = "vehicles";
+          break;
+      default:
+        URL = baseURL;
+    };
+  } else {
+    switch (e.srcElement.id) {
+      case "btnFilms":
+        URL = filmsURL;
+        searchType = "films";
+          break;
+      case "btnPeople":
+        URL = peopleURL;
+        searchType = "people";
+          break;
+      case "btnPlanets":
+        URL = planetsURL;
+        searchType = "planets";
+          break;
+      case "btnStarships":
+        URL = starshipsURL;
+        searchType = "starships";
+          break;
+      case "btnSpecies":
+        URL = speciesURL;
+        searchType = "species";
+          break;
+      case "btnVehicles":
+        URL = vehiclesURL;
+        searchType = "vehicles";
+          break;
+      default:
+        URL = baseURL;
+    };
   };
+
+  if (txtSearch.value.length > 0) {
+    searchString = "?search=" + txtSearch.value.replace(' ', '%20');
+  };
+
+  URL += searchString;
 
   fetch(URL)
   .then(result => {
@@ -128,6 +194,30 @@ function getResults(e){
   .then(jsonData => {
       // console.log(jsonData);
 
+      if (e.srcElement.id === "frmSearch") {
+        switch (ddSearchCategories.value) {
+          case "Films":
+            displayFilms(jsonData);
+              break;
+          case "People":
+            displayPeople(jsonData);
+              break;
+          case "Planets":
+            displayPlanets(jsonData);
+              break;
+          case "Starships":
+            displayStarships(jsonData);
+              break;
+          case "Species":
+            displaySpecies(jsonData);
+              break;
+          case "Vehicles":
+            displayVehicles(jsonData);
+              break;
+          default:
+            // URL = baseURL;
+        };
+      } else {
       switch (e.srcElement.id) {
         case "btnFilms":
           displayFilms(jsonData);
@@ -150,7 +240,7 @@ function getResults(e){
         default:
           // URL = baseURL;
       };
-
+    };
   })
   .catch(err => {
       console.log(err)
@@ -174,6 +264,20 @@ function displayFilms(jsonData){
     // moreDiv.style.display = 'flex';
     // moreLink.style.display = 'flex';
 
+    currentPage++;
+    // lastPage = 4; // jsonData.info.pages; // Need to pull this from the data
+    // Really just using the next page value as the last page because it isn't supplied in the API
+    // Could calculate the lastPage by jsonData.count/10 and +1 if there is a remainder
+    if (jsonData.next !== "" && jsonData.next !== null) {
+      lastPage = parseInt(jsonData.next.match(/page=(\d+)/)[1]);
+    };
+    // console.log("current", currentPage, "last", lastPage);
+
+    if (currentPage > 1) {
+      let moreRowDiv = document.getElementById("moreRowDiv");
+      moreRowDiv.parentNode.removeChild(moreRowDiv);
+    };
+    
     let resultsContainerDiv = document.createElement("div");
     resultsContainerDiv.className = "container";
 
@@ -221,7 +325,39 @@ function displayFilms(jsonData){
           resultsRowDiv.appendChild(cardDiv);
     };
 
+    let moreA = document.createElement("a");
+    moreA.href = "#";
+    // moreA.innerText =  "more " + txtSearch.value + " wallpapers";
+    moreA.innerText =  "more";
+    moreA.className = "colorBlackLink";
+    // moreA.style = "text-align: right;";
+    moreA.addEventListener('click', getMoreResults); 
+  
+  
+    let moreRowDiv = document.createElement("div");
+    moreRowDiv.className = "row justify-content-end p-4"; // "row clearfix";
+    moreRowDiv.id = "moreRowDiv";
+  
+    // let moreColOneDiv = document.createElement("div");
+    // moreColOneDiv.className = "col-md-11";
+  
+    let moreColTwoDiv = document.createElement("div");
+    // moreColTwoDiv.className = "col-md-4";
+    moreColTwoDiv.className = "col-md-auto text-right";
+  
+    moreColTwoDiv.appendChild(moreA);
+  
+    // moreRowDiv.appendChild(moreColOneDiv);
+    moreRowDiv.appendChild(moreColTwoDiv);
+    //resultsDiv.appendChild(moreRowDiv);
+  
     resultsContainerDiv.appendChild(resultsRowDiv);
+    resultsContainerDiv.appendChild(moreRowDiv);
+  
+    if (currentPage >= lastPage) {
+      resultsContainerDiv.removeChild(moreRowDiv)
+    };
+    
     resultsDiv.appendChild(resultsContainerDiv);
 
   };
@@ -240,6 +376,20 @@ function displayPeople(jsonData){
     // moreDiv.style.display = 'flex';
     // moreLink.style.display = 'flex';
 
+    currentPage++;
+    // lastPage = 4; // jsonData.info.pages; // Need to pull this from the data
+    // Really just using the next page value as the last page because it isn't supplied in the API
+    // Could calculate the lastPage by jsonData.count/10 and +1 if there is a remainder
+    if (jsonData.next !== "" && jsonData.next !== null) {
+      lastPage = parseInt(jsonData.next.match(/page=(\d+)/)[1]);
+    };
+    // console.log("current", currentPage, "last", lastPage);
+
+    if (currentPage > 1) {
+      let moreRowDiv = document.getElementById("moreRowDiv");
+      moreRowDiv.parentNode.removeChild(moreRowDiv);
+    };
+    
     let resultsContainerDiv = document.createElement("div");
     resultsContainerDiv.className = "container";
 
@@ -297,7 +447,39 @@ function displayPeople(jsonData){
           resultsRowDiv.appendChild(cardDiv);
     };
 
+    let moreA = document.createElement("a");
+    moreA.href = "#";
+    // moreA.innerText =  "more " + txtSearch.value + " wallpapers";
+    moreA.innerText =  "more";
+    moreA.className = "colorBlackLink";
+    // moreA.style = "text-align: right;";
+    moreA.addEventListener('click', getMoreResults); 
+  
+  
+    let moreRowDiv = document.createElement("div");
+    moreRowDiv.className = "row justify-content-end p-4"; // "row clearfix";
+    moreRowDiv.id = "moreRowDiv";
+  
+    // let moreColOneDiv = document.createElement("div");
+    // moreColOneDiv.className = "col-md-11";
+  
+    let moreColTwoDiv = document.createElement("div");
+    // moreColTwoDiv.className = "col-md-4";
+    moreColTwoDiv.className = "col-md-auto text-right";
+  
+    moreColTwoDiv.appendChild(moreA);
+  
+    // moreRowDiv.appendChild(moreColOneDiv);
+    moreRowDiv.appendChild(moreColTwoDiv);
+    //resultsDiv.appendChild(moreRowDiv);
+  
     resultsContainerDiv.appendChild(resultsRowDiv);
+    resultsContainerDiv.appendChild(moreRowDiv);
+  
+    if (currentPage >= lastPage) {
+      resultsContainerDiv.removeChild(moreRowDiv)
+    };
+    
     resultsDiv.appendChild(resultsContainerDiv);
 
   };
@@ -316,6 +498,20 @@ function displayPlanets(jsonData){
     // moreDiv.style.display = 'flex';
     // moreLink.style.display = 'flex';
 
+    currentPage++;
+    // lastPage = 4; // jsonData.info.pages; // Need to pull this from the data
+    // Really just using the next page value as the last page because it isn't supplied in the API
+    // Could calculate the lastPage by jsonData.count/10 and +1 if there is a remainder
+    if (jsonData.next !== "" && jsonData.next !== null) {
+      lastPage = parseInt(jsonData.next.match(/page=(\d+)/)[1]);
+    };
+    // console.log("current", currentPage, "last", lastPage);
+
+    if (currentPage > 1) {
+      let moreRowDiv = document.getElementById("moreRowDiv");
+      moreRowDiv.parentNode.removeChild(moreRowDiv);
+    };
+    
     let resultsContainerDiv = document.createElement("div");
     resultsContainerDiv.className = "container";
 
@@ -373,8 +569,40 @@ function displayPlanets(jsonData){
       resultsRowDiv.appendChild(cardDiv);
 };
 
-    resultsContainerDiv.appendChild(resultsRowDiv);
-    resultsDiv.appendChild(resultsContainerDiv);
+let moreA = document.createElement("a");
+moreA.href = "#";
+// moreA.innerText =  "more " + txtSearch.value + " wallpapers";
+moreA.innerText =  "more";
+moreA.className = "colorBlackLink";
+// moreA.style = "text-align: right;";
+moreA.addEventListener('click', getMoreResults); 
+
+
+let moreRowDiv = document.createElement("div");
+moreRowDiv.className = "row justify-content-end p-4"; // "row clearfix";
+moreRowDiv.id = "moreRowDiv";
+
+// let moreColOneDiv = document.createElement("div");
+// moreColOneDiv.className = "col-md-11";
+
+let moreColTwoDiv = document.createElement("div");
+// moreColTwoDiv.className = "col-md-4";
+moreColTwoDiv.className = "col-md-auto text-right";
+
+moreColTwoDiv.appendChild(moreA);
+
+// moreRowDiv.appendChild(moreColOneDiv);
+moreRowDiv.appendChild(moreColTwoDiv);
+//resultsDiv.appendChild(moreRowDiv);
+
+resultsContainerDiv.appendChild(resultsRowDiv);
+resultsContainerDiv.appendChild(moreRowDiv);
+
+if (currentPage >= lastPage) {
+  resultsContainerDiv.removeChild(moreRowDiv)
+};
+
+resultsDiv.appendChild(resultsContainerDiv);
 
   };
 
@@ -392,6 +620,20 @@ function displayStarships(jsonData){
     // moreDiv.style.display = 'flex';
     // moreLink.style.display = 'flex';
 
+    currentPage++;
+    // lastPage = 4; // jsonData.info.pages; // Need to pull this from the data
+    // Really just using the next page value as the last page because it isn't supplied in the API
+    // Could calculate the lastPage by jsonData.count/10 and +1 if there is a remainder
+    if (jsonData.next !== "" && jsonData.next !== null) {
+      lastPage = parseInt(jsonData.next.match(/page=(\d+)/)[1]);
+    };
+    // console.log("current", currentPage, "last", lastPage);
+
+    if (currentPage > 1) {
+      let moreRowDiv = document.getElementById("moreRowDiv");
+      moreRowDiv.parentNode.removeChild(moreRowDiv);
+    };
+    
     let resultsContainerDiv = document.createElement("div");
     resultsContainerDiv.className = "container";
 
@@ -465,8 +707,40 @@ function displayStarships(jsonData){
       resultsRowDiv.appendChild(cardDiv);
 };
 
-    resultsContainerDiv.appendChild(resultsRowDiv);
-    resultsDiv.appendChild(resultsContainerDiv);
+let moreA = document.createElement("a");
+moreA.href = "#";
+// moreA.innerText =  "more " + txtSearch.value + " wallpapers";
+moreA.innerText =  "more";
+moreA.className = "colorBlackLink";
+// moreA.style = "text-align: right;";
+moreA.addEventListener('click', getMoreResults); 
+
+
+let moreRowDiv = document.createElement("div");
+moreRowDiv.className = "row justify-content-end p-4"; // "row clearfix";
+moreRowDiv.id = "moreRowDiv";
+
+// let moreColOneDiv = document.createElement("div");
+// moreColOneDiv.className = "col-md-11";
+
+let moreColTwoDiv = document.createElement("div");
+// moreColTwoDiv.className = "col-md-4";
+moreColTwoDiv.className = "col-md-auto text-right";
+
+moreColTwoDiv.appendChild(moreA);
+
+// moreRowDiv.appendChild(moreColOneDiv);
+moreRowDiv.appendChild(moreColTwoDiv);
+//resultsDiv.appendChild(moreRowDiv);
+
+resultsContainerDiv.appendChild(resultsRowDiv);
+resultsContainerDiv.appendChild(moreRowDiv);
+
+if (currentPage >= lastPage) {
+  resultsContainerDiv.removeChild(moreRowDiv)
+};
+
+resultsDiv.appendChild(resultsContainerDiv);
 
   };
 
@@ -484,6 +758,20 @@ function displaySpecies(jsonData){
     // moreDiv.style.display = 'flex';
     // moreLink.style.display = 'flex';
 
+    currentPage++;
+    // lastPage = 4; // jsonData.info.pages; // Need to pull this from the data
+    // Really just using the next page value as the last page because it isn't supplied in the API
+    // Could calculate the lastPage by jsonData.count/10 and +1 if there is a remainder
+    if (jsonData.next !== "" && jsonData.next !== null) {
+      lastPage = parseInt(jsonData.next.match(/page=(\d+)/)[1]);
+    };
+    // console.log("current", currentPage, "last", lastPage);
+
+    if (currentPage > 1) {
+      let moreRowDiv = document.getElementById("moreRowDiv");
+      moreRowDiv.parentNode.removeChild(moreRowDiv);
+    };
+    
     let resultsContainerDiv = document.createElement("div");
     resultsContainerDiv.className = "container";
 
@@ -545,8 +833,40 @@ function displaySpecies(jsonData){
       resultsRowDiv.appendChild(cardDiv);
 };
 
-    resultsContainerDiv.appendChild(resultsRowDiv);
-    resultsDiv.appendChild(resultsContainerDiv);
+let moreA = document.createElement("a");
+moreA.href = "#";
+// moreA.innerText =  "more " + txtSearch.value + " wallpapers";
+moreA.innerText =  "more";
+moreA.className = "colorBlackLink";
+// moreA.style = "text-align: right;";
+moreA.addEventListener('click', getMoreResults); 
+
+
+let moreRowDiv = document.createElement("div");
+moreRowDiv.className = "row justify-content-end p-4"; // "row clearfix";
+moreRowDiv.id = "moreRowDiv";
+
+// let moreColOneDiv = document.createElement("div");
+// moreColOneDiv.className = "col-md-11";
+
+let moreColTwoDiv = document.createElement("div");
+// moreColTwoDiv.className = "col-md-4";
+moreColTwoDiv.className = "col-md-auto text-right";
+
+moreColTwoDiv.appendChild(moreA);
+
+// moreRowDiv.appendChild(moreColOneDiv);
+moreRowDiv.appendChild(moreColTwoDiv);
+//resultsDiv.appendChild(moreRowDiv);
+
+resultsContainerDiv.appendChild(resultsRowDiv);
+resultsContainerDiv.appendChild(moreRowDiv);
+
+if (currentPage >= lastPage) {
+  resultsContainerDiv.removeChild(moreRowDiv)
+};
+
+resultsDiv.appendChild(resultsContainerDiv);
 
   };
 
@@ -564,6 +884,20 @@ function displayVehicles(jsonData){
     // moreDiv.style.display = 'flex';
     // moreLink.style.display = 'flex';
 
+    currentPage++;
+    // lastPage = 4; // jsonData.info.pages; // Need to pull this from the data
+    // Really just using the next page value as the last page because it isn't supplied in the API
+    // Could calculate the lastPage by jsonData.count/10 and +1 if there is a remainder
+    if (jsonData.next !== "" && jsonData.next !== null) {
+      lastPage = parseInt(jsonData.next.match(/page=(\d+)/)[1]);
+    };
+    // console.log("current", currentPage, "last", lastPage);
+
+    if (currentPage > 1) {
+      let moreRowDiv = document.getElementById("moreRowDiv");
+      moreRowDiv.parentNode.removeChild(moreRowDiv);
+    };
+    
     let resultsContainerDiv = document.createElement("div");
     resultsContainerDiv.className = "container";
 
@@ -633,10 +967,115 @@ function displayVehicles(jsonData){
       resultsRowDiv.appendChild(cardDiv);
 };
 
-    resultsContainerDiv.appendChild(resultsRowDiv);
-    resultsDiv.appendChild(resultsContainerDiv);
+let moreA = document.createElement("a");
+moreA.href = "#";
+// moreA.innerText =  "more " + txtSearch.value + " wallpapers";
+moreA.innerText =  "more";
+moreA.className = "colorBlackLink";
+// moreA.style = "text-align: right;";
+moreA.addEventListener('click', getMoreResults); 
+
+
+let moreRowDiv = document.createElement("div");
+moreRowDiv.className = "row justify-content-end p-4"; // "row clearfix";
+moreRowDiv.id = "moreRowDiv";
+
+// let moreColOneDiv = document.createElement("div");
+// moreColOneDiv.className = "col-md-11";
+
+let moreColTwoDiv = document.createElement("div");
+// moreColTwoDiv.className = "col-md-4";
+moreColTwoDiv.className = "col-md-auto text-right";
+
+moreColTwoDiv.appendChild(moreA);
+
+// moreRowDiv.appendChild(moreColOneDiv);
+moreRowDiv.appendChild(moreColTwoDiv);
+//resultsDiv.appendChild(moreRowDiv);
+
+resultsContainerDiv.appendChild(resultsRowDiv);
+resultsContainerDiv.appendChild(moreRowDiv);
+
+if (currentPage >= lastPage) {
+  resultsContainerDiv.removeChild(moreRowDiv)
+};
+
+resultsDiv.appendChild(resultsContainerDiv);
 
   };
 
+};
+
+function getMoreResults(e){
+  e.preventDefault();
+  // console.log(e);
+
+  nextPage = currentPage + 1;
+
+  // Removes ?page=# to the URL
+  if (URL.includes("?page=")) {
+    URL = URL.slice(0, -7)
+    // console.log(URL);
+  } else if (URL.includes("&page=")) {
+    URL = URL.slice(0, -7)
+    // console.log(URL);
+  };
+
+  if (URL.includes("?")) {
+    // console.log(URL);
+
+    // Search Pagination
+    URL = URL + "&page=" + nextPage;
+  } else {
+    // console.log(URL);
+
+    // Search Pagination
+    URL = URL + "?page=" + nextPage;
+  };
+
+  // Keeps adding ?page= to the URL
+  // Fixed
+  console.log(URL);
+
+ 
+
+  fetch(URL)
+  .then(result => {
+      // console.log(result);
+      return result.json();
+  })
+  .then(jsonData => {
+      // console.log(jsonData);
+
+      switch (searchType) {
+          case "films":
+            displayFilms(jsonData);
+              break;
+          case "people":
+            displayPeople(jsonData);
+              break;
+          case "planets":
+            displayPlanets(jsonData);
+              break;
+          case "starships":
+            displayStarships(jsonData);
+              break;
+          case "species":
+            displaySpecies(jsonData);
+              break;
+          case "vehicles":
+            displayVehicles(jsonData);
+              break;
+          default:
+            // URL = baseURL;
+        };
+
+  })
+  .catch(err => {
+      console.log(err)
+      errorHeader.innerText = err;
+      errorHeader.style.display = 'flex';
+  });
+  
 };
 
