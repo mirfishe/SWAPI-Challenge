@@ -295,6 +295,10 @@ function displayFilms(jsonData){
 
           let titleP = document.createElement("p");
           titleP.innerHTML = "<strong>" + results[i].title + "</strong>";
+          let titleLink = document.createElement("a");
+          titleLink.href = results[i].url;
+          titleLink.innerHTML = results[i].title;
+          titleLink.target = "_blank";
 
           let directorP = document.createElement("p");
           directorP.innerHTML = "Director: " + results[i].director;
@@ -314,12 +318,70 @@ function displayFilms(jsonData){
           openingCrawlP.innerHTML = results[i].opening_crawl;
 
 
+          let charactersArray = results[i].characters;
+          let charactersP = document.createElement("p");
+          charactersP.innerHTML = "Characters: ";
+          for (let j = 0; j < charactersArray.length; j++) {
+            charactersP.innerHTML += charactersArray[j];
+            if (j < charactersArray.length - 1) {
+              charactersP.innerHTML += ", ";
+            };
+          };
+
+          let planetsArray = results[i].planets;
+          let planetsP = document.createElement("p");
+          planetsP.innerHTML = "Planets: ";
+          for (let j = 0; j < planetsArray.length; j++) {
+            planetsP.innerHTML += planetsArray[j];
+            if (j < planetsArray.length - 1) {
+              planetsP.innerHTML += ", ";
+            };
+          };
+
+          let speciesArray = results[i].species;
+          let speciesP = document.createElement("p");
+          speciesP.innerHTML = "Species: ";
+          for (let j = 0; j < speciesArray.length; j++) {
+            speciesP.innerHTML += speciesArray[j];
+            if (j < speciesArray.length - 1) {
+              speciesP.innerHTML += ", ";
+            };
+          };
+
+          let starshipsArray = results[i].starships;
+          let starshipsP = document.createElement("p");
+          starshipsP.innerHTML = "Starships: ";
+          for (let j = 0; j < starshipsArray.length; j++) {
+            starshipsP.innerHTML += starshipsArray[j];
+            if (j < starshipsArray.length - 1) {
+              starshipsP.innerHTML += ", ";
+            };
+          };
+
+          let vehiclesArray = results[i].vehicles;
+          let vehiclesP = document.createElement("p");
+          vehiclesP.innerHTML = "Vehicles: ";
+          for (let j = 0; j < vehiclesArray.length; j++) {
+            vehiclesP.innerHTML += vehiclesArray[j];
+            if (j < vehiclesArray.length - 1) {
+              vehiclesP.innerHTML += ", ";
+            };
+          };
+
+
           cardBodyDiv.appendChild(titleP);
+          cardBodyDiv.appendChild(titleLink);
           cardBodyDiv.appendChild(directorP);
           cardBodyDiv.appendChild(producerP);
           cardBodyDiv.appendChild(episodeIdP);
           cardBodyDiv.appendChild(releaseDateP);
           cardBodyDiv.appendChild(openingCrawlP);
+
+          cardBodyDiv.appendChild(charactersP);
+          cardBodyDiv.appendChild(planetsP);
+          cardBodyDiv.appendChild(speciesP);
+          cardBodyDiv.appendChild(starshipsP);
+          cardBodyDiv.appendChild(vehiclesP);
 
           cardDiv.appendChild(cardBodyDiv);
           resultsRowDiv.appendChild(cardDiv);
@@ -405,8 +467,12 @@ function displayPeople(jsonData){
           let cardBodyDiv = document.createElement("div");
           cardBodyDiv.className = "card-body";
 
-          let nameP = document.createElement("p");
-          nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
+          // let nameP = document.createElement("p");
+          // nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
+          let nameLink = document.createElement("a");
+          nameLink.href = results[i].url;
+          nameLink.innerHTML = results[i].name;
+          nameLink.target = "_blank";
 
           let birthYearP = document.createElement("p");
           birthYearP.innerHTML = "Birth Year: " + results[i].birth_year;
@@ -433,7 +499,38 @@ function displayPeople(jsonData){
           homeworldP.innerHTML = "Homeworld: " + results[i].homeworld;
 
 
-          cardBodyDiv.appendChild(nameP);
+          let filmsArray = results[i].films;
+          let filmsP = document.createElement("p");
+          filmsP.innerHTML = "Films: ";
+          for (let j = 0; j < filmsArray.length; j++) {
+            filmsP.innerHTML += filmsArray[j];
+            if (j < filmsArray.length - 1) {
+              filmsP.innerHTML += ", ";
+            };
+          };
+
+          let starshipsArray = results[i].starships;
+          let starshipsP = document.createElement("p");
+          starshipsP.innerHTML = "Starships: ";
+          for (let j = 0; j < starshipsArray.length; j++) {
+            starshipsP.innerHTML += starshipsArray[j];
+            if (j < starshipsArray.length - 1) {
+              starshipsP.innerHTML += ", ";
+            };
+          };
+
+          let vehiclesArray = results[i].vehicles;
+          let vehiclesP = document.createElement("p");
+          vehiclesP.innerHTML = "Vehicles: ";
+          for (let j = 0; j < vehiclesArray.length; j++) {
+            vehiclesP.innerHTML += vehiclesArray[j];
+            if (j < vehiclesArray.length - 1) {
+              vehiclesP.innerHTML += ", ";
+            };
+          };
+
+          // cardBodyDiv.appendChild(nameP);
+          cardBodyDiv.appendChild(nameLink);
           cardBodyDiv.appendChild(birthYearP);
           cardBodyDiv.appendChild(eyeColorP);
           cardBodyDiv.appendChild(genderP);
@@ -442,6 +539,10 @@ function displayPeople(jsonData){
           cardBodyDiv.appendChild(massP);
           cardBodyDiv.appendChild(skinColorP);
           cardBodyDiv.appendChild(homeworldP);
+
+          cardBodyDiv.appendChild(filmsP);
+          cardBodyDiv.appendChild(starshipsP);
+          cardBodyDiv.appendChild(vehiclesP);
 
           cardDiv.appendChild(cardBodyDiv);
           resultsRowDiv.appendChild(cardDiv);
@@ -527,8 +628,12 @@ function displayPlanets(jsonData){
       let cardBodyDiv = document.createElement("div");
       cardBodyDiv.className = "card-body";
 
-      let nameP = document.createElement("p");
-      nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
+      // let nameP = document.createElement("p");
+      // nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
+      let nameLink = document.createElement("a");
+      nameLink.href = results[i].url;
+      nameLink.innerHTML = results[i].name;
+      nameLink.target = "_blank";
 
       let climateP = document.createElement("p");
       climateP.innerHTML = "Climate: " + results[i].climate;
@@ -555,7 +660,29 @@ function displayPlanets(jsonData){
       terrainP.innerHTML = "Terrain: " + results[i].terrain;
 
 
-      cardBodyDiv.appendChild(nameP);
+      let filmsArray = results[i].films;
+      let filmsP = document.createElement("p");
+      filmsP.innerHTML = "Films: ";
+      for (let j = 0; j < filmsArray.length; j++) {
+        filmsP.innerHTML += filmsArray[j];
+        if (j < filmsArray.length - 1) {
+          filmsP.innerHTML += ", ";
+        };
+      };
+
+      let residentsArray = results[i].residents;
+      let residentsP = document.createElement("p");
+      residentsP.innerHTML = "Residents: ";
+      for (let j = 0; j < residentsArray.length; j++) {
+        residentsP.innerHTML += residentsArray[j];
+        if (j < residentsArray.length - 1) {
+          residentsP.innerHTML += ", ";
+        };
+      };
+
+
+      // cardBodyDiv.appendChild(nameP);
+      cardBodyDiv.appendChild(nameLink);
       cardBodyDiv.appendChild(climateP);
       cardBodyDiv.appendChild(diameterP);
       cardBodyDiv.appendChild(gravityP);
@@ -564,6 +691,9 @@ function displayPlanets(jsonData){
       cardBodyDiv.appendChild(rotationPeriodP);
       cardBodyDiv.appendChild(surfaceWaterP);
       cardBodyDiv.appendChild(terrainP);
+
+      cardBodyDiv.appendChild(filmsP);
+      cardBodyDiv.appendChild(residentsP);
 
       cardDiv.appendChild(cardBodyDiv);
       resultsRowDiv.appendChild(cardDiv);
@@ -649,8 +779,12 @@ function displayStarships(jsonData){
       let cardBodyDiv = document.createElement("div");
       cardBodyDiv.className = "card-body";
 
-      let nameP = document.createElement("p");
-      nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
+      // let nameP = document.createElement("p");
+      // nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
+      let nameLink = document.createElement("a");
+      nameLink.href = results[i].url;
+      nameLink.innerHTML = results[i].name;
+      nameLink.target = "_blank";
 
       let MGLTP = document.createElement("p");
       MGLTP.innerHTML = "MGLT: " + results[i].MGLT;
@@ -689,7 +823,28 @@ function displayStarships(jsonData){
       starshipClassP.innerHTML = "Starship Class: " + results[i].starship_class;
 
 
-      cardBodyDiv.appendChild(nameP);
+      let filmsArray = results[i].films;
+      let filmsP = document.createElement("p");
+      filmsP.innerHTML = "Films: ";
+      for (let j = 0; j < filmsArray.length; j++) {
+        filmsP.innerHTML += filmsArray[j];
+        if (j < filmsArray.length - 1) {
+          filmsP.innerHTML += ", ";
+        };
+      };
+
+      let pilotsArray = results[i].pilots;
+      let pilotsP = document.createElement("p");
+      pilotsP.innerHTML = "Pilots: ";
+      for (let j = 0; j < pilotsArray.length; j++) {
+        pilotsP.innerHTML += pilotsArray[j];
+        if (j < pilotsArray.length - 1) {
+          pilotsP.innerHTML += ", ";
+        };
+      };
+
+      // cardBodyDiv.appendChild(nameP);
+      cardBodyDiv.appendChild(nameLink);
       cardBodyDiv.appendChild(MGLTP);
       cardBodyDiv.appendChild(cargoCapacityP);
       cardBodyDiv.appendChild(consumablesP);
@@ -702,6 +857,9 @@ function displayStarships(jsonData){
       cardBodyDiv.appendChild(modelP);
       cardBodyDiv.appendChild(passengersP);
       cardBodyDiv.appendChild(starshipClassP);
+
+      cardBodyDiv.appendChild(filmsP);
+      cardBodyDiv.appendChild(pilotsP);
 
       cardDiv.appendChild(cardBodyDiv);
       resultsRowDiv.appendChild(cardDiv);
@@ -787,8 +945,12 @@ function displaySpecies(jsonData){
       let cardBodyDiv = document.createElement("div");
       cardBodyDiv.className = "card-body";
 
-      let nameP = document.createElement("p");
-      nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
+      // let nameP = document.createElement("p");
+      // nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
+      let nameLink = document.createElement("a");
+      nameLink.href = results[i].url;
+      nameLink.innerHTML = results[i].name;
+      nameLink.target = "_blank";
 
       let averageHeightP = document.createElement("p");
       averageHeightP.innerHTML = "Average Height: " + results[i].average_height;
@@ -818,7 +980,28 @@ function displaySpecies(jsonData){
       skinColorsP.innerHTML = "Skin Colors: " + results[i].skin_colors;
 
 
-      cardBodyDiv.appendChild(nameP);
+      let filmsArray = results[i].films;
+      let filmsP = document.createElement("p");
+      filmsP.innerHTML = "Films: ";
+      for (let j = 0; j < filmsArray.length; j++) {
+        filmsP.innerHTML += filmsArray[j];
+        if (j < filmsArray.length - 1) {
+          filmsP.innerHTML += ", ";
+        };
+      };
+
+      let peopleArray = results[i].people;
+      let peopleP = document.createElement("p");
+      peopleP.innerHTML = "People: ";
+      for (let j = 0; j < peopleArray.length; j++) {
+        peopleP.innerHTML += peopleArray[j];
+        if (j < peopleArray.length - 1) {
+          peopleP.innerHTML += ", ";
+        };
+      };
+
+      // cardBodyDiv.appendChild(nameP);
+      cardBodyDiv.appendChild(nameLink);
       cardBodyDiv.appendChild(averageHeightP);
       cardBodyDiv.appendChild(averageLifespanP);
       cardBodyDiv.appendChild(classificationP);
@@ -828,6 +1011,9 @@ function displaySpecies(jsonData){
       cardBodyDiv.appendChild(homeworldP);
       cardBodyDiv.appendChild(languageP);
       cardBodyDiv.appendChild(skinColorsP);
+
+      cardBodyDiv.appendChild(filmsP);
+      cardBodyDiv.appendChild(peopleP);
 
       cardDiv.appendChild(cardBodyDiv);
       resultsRowDiv.appendChild(cardDiv);
@@ -913,8 +1099,12 @@ function displayVehicles(jsonData){
       let cardBodyDiv = document.createElement("div");
       cardBodyDiv.className = "card-body";
 
-      let nameP = document.createElement("p");
-      nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
+      // let nameP = document.createElement("p");
+      // nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
+      let nameLink = document.createElement("a");
+      nameLink.href = results[i].url;
+      nameLink.innerHTML = results[i].name;
+      nameLink.target = "_blank";
 
       let MGLTP = document.createElement("p");
       MGLTP.innerHTML = "MGLT: " + results[i].MGLT;
@@ -950,7 +1140,28 @@ function displayVehicles(jsonData){
       vehicle_classP.innerHTML = "Vehicle Class: " + results[i].vehicle_class;
 
 
-      cardBodyDiv.appendChild(nameP);
+      let filmsArray = results[i].films;
+      let filmsP = document.createElement("p");
+      filmsP.innerHTML = "Films: ";
+      for (let j = 0; j < filmsArray.length; j++) {
+        filmsP.innerHTML += filmsArray[j];
+        if (j < filmsArray.length - 1) {
+          filmsP.innerHTML += ", ";
+        };
+      };
+
+      let pilotsArray = results[i].pilots;
+      let pilotsP = document.createElement("p");
+      pilotsP.innerHTML = "Pilots: ";
+      for (let j = 0; j < pilotsArray.length; j++) {
+        pilotsP.innerHTML += pilotsArray[j];
+        if (j < pilotsArray.length - 1) {
+          pilotsP.innerHTML += ", ";
+        };
+      };
+
+      // cardBodyDiv.appendChild(nameP);
+      cardBodyDiv.appendChild(nameLink);
       cardBodyDiv.appendChild(MGLTP);
       cardBodyDiv.appendChild(cargoCapacityP);
       cardBodyDiv.appendChild(consumablesP);
@@ -962,6 +1173,9 @@ function displayVehicles(jsonData){
       cardBodyDiv.appendChild(modelP);
       cardBodyDiv.appendChild(passengersP);
       cardBodyDiv.appendChild(vehicle_classP);
+
+      cardBodyDiv.appendChild(filmsP);
+      cardBodyDiv.appendChild(pilotsP);
 
       cardDiv.appendChild(cardBodyDiv);
       resultsRowDiv.appendChild(cardDiv);
