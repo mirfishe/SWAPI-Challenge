@@ -296,7 +296,7 @@ function displayFilms(jsonData){
           // let titleP = document.createElement("p");
           // titleP.innerHTML = "<strong>" + results[i].title + "</strong>";
           let titleLink = document.createElement("a");
-          titleLink.href = results[i].url;
+          titleLink.href = results[i].url.replace("http://", "https://");
           titleLink.alt = results[i].title;
           titleLink.innerHTML = results[i].title;
           // titleLink.target = "_blank";
@@ -324,11 +324,11 @@ function displayFilms(jsonData){
           let charactersP = document.createElement("p");
           charactersP.innerHTML = "Characters: ";
           for (let j = 0; j < charactersArray.length; j++) {
-            // charactersP.innerHTML += charactersArray[j];
+            // charactersP.innerHTML += charactersArray[j].replace("http://", "https://");
             let urlLink = document.createElement("a");
-            urlLink.href = charactersArray[j];
-            urlLink.alt = charactersArray[j];
-            urlLink.innerHTML = charactersArray[j];
+            urlLink.href = charactersArray[j].replace("http://", "https://");
+            urlLink.alt = charactersArray[j].replace("http://", "https://");
+            urlLink.innerHTML = charactersArray[j].replace("http://", "https://");
             // urlLink.target = "_blank";
             urlLink.addEventListener('click', loadDetailsModal);
 
@@ -346,11 +346,11 @@ function displayFilms(jsonData){
           let planetsP = document.createElement("p");
           planetsP.innerHTML = "Planets: ";
           for (let j = 0; j < planetsArray.length; j++) {
-            // planetsP.innerHTML += planetsArray[j];
+            // planetsP.innerHTML += planetsArray[j].replace("http://", "https://");
             let urlLink = document.createElement("a");
-            urlLink.href = planetsArray[j];
-            urlLink.alt = planetsArray[j];
-            urlLink.innerHTML = planetsArray[j];
+            urlLink.href = planetsArray[j].replace("http://", "https://");
+            urlLink.alt = planetsArray[j].replace("http://", "https://");
+            urlLink.innerHTML = planetsArray[j].replace("http://", "https://");
             // urlLink.target = "_blank";
             urlLink.addEventListener('click', loadDetailsModal);
 
@@ -368,11 +368,11 @@ function displayFilms(jsonData){
           let speciesP = document.createElement("p");
           speciesP.innerHTML = "Species: ";
           for (let j = 0; j < speciesArray.length; j++) {
-            // speciesP.innerHTML += speciesArray[j];
+            // speciesP.innerHTML += speciesArray[j].replace("http://", "https://");
             let urlLink = document.createElement("a");
-            urlLink.href = speciesArray[j];
-            urlLink.alt = speciesArray[j];
-            urlLink.innerHTML = speciesArray[j];
+            urlLink.href = speciesArray[j].replace("http://", "https://");
+            urlLink.alt = speciesArray[j].replace("http://", "https://");
+            urlLink.innerHTML = speciesArray[j].replace("http://", "https://");
             // urlLink.target = "_blank";
             urlLink.addEventListener('click', loadDetailsModal);
 
@@ -390,11 +390,11 @@ function displayFilms(jsonData){
           let starshipsP = document.createElement("p");
           starshipsP.innerHTML = "Starships: ";
           for (let j = 0; j < starshipsArray.length; j++) {
-            // starshipsP.innerHTML += starshipsArray[j];
+            // starshipsP.innerHTML += starshipsArray[j].replace("http://", "https://");
             let urlLink = document.createElement("a");
-            urlLink.href = starshipsArray[j];
-            urlLink.alt = starshipsArray[j];
-            urlLink.innerHTML = starshipsArray[j];
+            urlLink.href = starshipsArray[j].replace("http://", "https://");
+            urlLink.alt = starshipsArray[j].replace("http://", "https://");
+            urlLink.innerHTML = starshipsArray[j].replace("http://", "https://");
             // urlLink.target = "_blank";
             urlLink.addEventListener('click', loadDetailsModal);
 
@@ -412,11 +412,11 @@ function displayFilms(jsonData){
           let vehiclesP = document.createElement("p");
           vehiclesP.innerHTML = "Vehicles: ";
           for (let j = 0; j < vehiclesArray.length; j++) {
-            // vehiclesP.innerHTML += vehiclesArray[j];
+            // vehiclesP.innerHTML += vehiclesArray[j].replace("http://", "https://");
             let urlLink = document.createElement("a");
-            urlLink.href = vehiclesArray[j];
-            urlLink.alt = vehiclesArray[j];
-            urlLink.innerHTML = vehiclesArray[j];
+            urlLink.href = vehiclesArray[j].replace("http://", "https://");
+            urlLink.alt = vehiclesArray[j].replace("http://", "https://");
+            urlLink.innerHTML = vehiclesArray[j].replace("http://", "https://");
             // urlLink.target = "_blank";
             urlLink.addEventListener('click', loadDetailsModal);
 
@@ -532,7 +532,7 @@ function displayPeople(jsonData){
           // let nameP = document.createElement("p");
           // nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
           let nameLink = document.createElement("a");
-          nameLink.href = results[i].url;
+          nameLink.href = results[i].url.replace("http://", "https://");
           nameLink.alt = results[i].name;
           nameLink.innerHTML = results[i].name;
           // nameLink.target = "_blank";
@@ -562,9 +562,9 @@ function displayPeople(jsonData){
           let homeworldP = document.createElement("p");
           homeworldP.innerHTML = "Homeworld: "; // + results[i].homeworld;
           let homeworldLink = document.createElement("a");
-          homeworldLink.href = results[i].homeworld;
-          homeworldLink.alt = results[i].homeworld;
-          homeworldLink.innerHTML = results[i].homeworld
+          homeworldLink.href = results[i].homeworld.replace("http://", "https://");
+          homeworldLink.alt = results[i].homeworld.replace("http://", "https://");
+          homeworldLink.innerHTML = results[i].homeworld.replace("http://", "https://");
           // homeworldLink.target = "_blank";
           homeworldLink.addEventListener('click', loadDetailsModal);
           homeworldP.appendChild(homeworldLink);
@@ -574,11 +574,11 @@ function displayPeople(jsonData){
           let filmsP = document.createElement("p");
           filmsP.innerHTML = "Films: ";
           for (let j = 0; j < filmsArray.length; j++) {
-            // filmsP.innerHTML += filmsArray[j];
+            // filmsP.innerHTML += filmsArray[j].replace("http://", "https://");
             let urlLink = document.createElement("a");
-            urlLink.href = filmsArray[j];
-            urlLink.alt = filmsArray[j];
-            urlLink.innerHTML = filmsArray[j];
+            urlLink.href = filmsArray[j].replace("http://", "https://");
+            urlLink.alt = filmsArray[j].replace("http://", "https://");
+            urlLink.innerHTML = filmsArray[j].replace("http://", "https://");
             // urlLink.target = "_blank";
             urlLink.addEventListener('click', loadDetailsModal);
 
@@ -596,11 +596,11 @@ function displayPeople(jsonData){
           let starshipsP = document.createElement("p");
           starshipsP.innerHTML = "Starships: ";
           for (let j = 0; j < starshipsArray.length; j++) {
-            // starshipsP.innerHTML += starshipsArray[j];
+            // starshipsP.innerHTML += starshipsArray[j].replace("http://", "https://");
             let urlLink = document.createElement("a");
-            urlLink.href = starshipsArray[j];
-            urlLink.alt = starshipsArray[j];
-            urlLink.innerHTML = starshipsArray[j];
+            urlLink.href = starshipsArray[j].replace("http://", "https://");
+            urlLink.alt = starshipsArray[j].replace("http://", "https://");
+            urlLink.innerHTML = starshipsArray[j].replace("http://", "https://");
             // urlLink.target = "_blank";
             urlLink.addEventListener('click', loadDetailsModal);
 
@@ -618,11 +618,11 @@ function displayPeople(jsonData){
           let vehiclesP = document.createElement("p");
           vehiclesP.innerHTML = "Vehicles: ";
           for (let j = 0; j < vehiclesArray.length; j++) {
-            // vehiclesP.innerHTML += vehiclesArray[j];
+            // vehiclesP.innerHTML += vehiclesArray[j].replace("http://", "https://");
             let urlLink = document.createElement("a");
-            urlLink.href = vehiclesArray[j];
-            urlLink.alt = vehiclesArray[j];
-            urlLink.innerHTML = vehiclesArray[j];
+            urlLink.href = vehiclesArray[j].replace("http://", "https://");
+            urlLink.alt = vehiclesArray[j].replace("http://", "https://");
+            urlLink.innerHTML = vehiclesArray[j].replace("http://", "https://");
             // urlLink.target = "_blank";
             urlLink.addEventListener('click', loadDetailsModal);
 
@@ -738,7 +738,7 @@ function displayPlanets(jsonData){
       // let nameP = document.createElement("p");
       // nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
       let nameLink = document.createElement("a");
-      nameLink.href = results[i].url;
+      nameLink.href = results[i].url.replace("http://", "https://");
       nameLink.alt = results[i].name;
       nameLink.innerHTML = results[i].name;
       // nameLink.target = "_blank";
@@ -773,11 +773,11 @@ function displayPlanets(jsonData){
       let filmsP = document.createElement("p");
       filmsP.innerHTML = "Films: ";
       for (let j = 0; j < filmsArray.length; j++) {
-        // filmsP.innerHTML += filmsArray[j];
+        // filmsP.innerHTML += filmsArray[j].replace("http://", "https://");
         let urlLink = document.createElement("a");
-        urlLink.href = filmsArray[j];
-        urlLink.alt = filmsArray[j];
-        urlLink.innerHTML = filmsArray[j];
+        urlLink.href = filmsArray[j].replace("http://", "https://");
+        urlLink.alt = filmsArray[j].replace("http://", "https://");
+        urlLink.innerHTML = filmsArray[j].replace("http://", "https://");
         // urlLink.target = "_blank";
         urlLink.addEventListener('click', loadDetailsModal);
 
@@ -795,11 +795,11 @@ function displayPlanets(jsonData){
       let residentsP = document.createElement("p");
       residentsP.innerHTML = "Residents: ";
       for (let j = 0; j < residentsArray.length; j++) {
-        // residentsP.innerHTML += residentsArray[j];
+        // residentsP.innerHTML += residentsArray[j].replace("http://", "https://");
         let urlLink = document.createElement("a");
-        urlLink.href = residentsArray[j];
-        urlLink.alt = residentsArray[j];
-        urlLink.innerHTML = residentsArray[j];
+        urlLink.href = residentsArray[j].replace("http://", "https://");
+        urlLink.alt = residentsArray[j].replace("http://", "https://");
+        urlLink.innerHTML = residentsArray[j].replace("http://", "https://");
         // urlLink.target = "_blank";
         urlLink.addEventListener('click', loadDetailsModal);
 
@@ -915,7 +915,7 @@ function displayStarships(jsonData){
       // let nameP = document.createElement("p");
       // nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
       let nameLink = document.createElement("a");
-      nameLink.href = results[i].url;
+      nameLink.href = results[i].url.replace("http://", "https://");
       nameLink.alt = results[i].name;
       nameLink.innerHTML = results[i].name;
       // nameLink.target = "_blank";
@@ -962,11 +962,11 @@ function displayStarships(jsonData){
       let filmsP = document.createElement("p");
       filmsP.innerHTML = "Films: ";
       for (let j = 0; j < filmsArray.length; j++) {
-        // filmsP.innerHTML += filmsArray[j];
+        // filmsP.innerHTML += filmsArray[j].replace("http://", "https://");
         let urlLink = document.createElement("a");
-        urlLink.href = filmsArray[j];
-        urlLink.alt = filmsArray[j];
-        urlLink.innerHTML = filmsArray[j];
+        urlLink.href = filmsArray[j].replace("http://", "https://");
+        urlLink.alt = filmsArray[j].replace("http://", "https://");
+        urlLink.innerHTML = filmsArray[j].replace("http://", "https://");
         // urlLink.target = "_blank";
         urlLink.addEventListener('click', loadDetailsModal);
 
@@ -984,11 +984,11 @@ function displayStarships(jsonData){
       let pilotsP = document.createElement("p");
       pilotsP.innerHTML = "Pilots: ";
       for (let j = 0; j < pilotsArray.length; j++) {
-        // pilotsP.innerHTML += pilotsArray[j];
+        // pilotsP.innerHTML += pilotsArray[j].replace("http://", "https://");
         let urlLink = document.createElement("a");
-        urlLink.href = pilotsArray[j];
-        urlLink.alt = pilotsArray[j];
-        urlLink.innerHTML = pilotsArray[j];
+        urlLink.href = pilotsArray[j].replace("http://", "https://");
+        urlLink.alt = pilotsArray[j].replace("http://", "https://");
+        urlLink.innerHTML = pilotsArray[j].replace("http://", "https://");
         // urlLink.target = "_blank";
         urlLink.addEventListener('click', loadDetailsModal);
 
@@ -1107,7 +1107,7 @@ function displaySpecies(jsonData){
       // let nameP = document.createElement("p");
       // nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
       let nameLink = document.createElement("a");
-      nameLink.href = results[i].url;
+      nameLink.href = results[i].url.replace("http://", "https://");
       nameLink.alt = results[i].name;
       nameLink.innerHTML = results[i].name;
       // nameLink.target = "_blank";
@@ -1145,11 +1145,11 @@ function displaySpecies(jsonData){
       let filmsP = document.createElement("p");
       filmsP.innerHTML = "Films: ";
       for (let j = 0; j < filmsArray.length; j++) {
-        // filmsP.innerHTML += filmsArray[j];
+        // filmsP.innerHTML += filmsArray[j].replace("http://", "https://");
         let urlLink = document.createElement("a");
-        urlLink.href = filmsArray[j];
-        urlLink.alt = filmsArray[j];
-        urlLink.innerHTML = filmsArray[j];
+        urlLink.href = filmsArray[j].replace("http://", "https://");
+        urlLink.alt = filmsArray[j].replace("http://", "https://");
+        urlLink.innerHTML = filmsArray[j].replace("http://", "https://");
         // urlLink.target = "_blank";
         urlLink.addEventListener('click', loadDetailsModal);
 
@@ -1167,11 +1167,11 @@ function displaySpecies(jsonData){
       let peopleP = document.createElement("p");
       peopleP.innerHTML = "People: ";
       for (let j = 0; j < peopleArray.length; j++) {
-        // peopleP.innerHTML += peopleArray[j];
+        // peopleP.innerHTML += peopleArray[j].replace("http://", "https://");
         let urlLink = document.createElement("a");
-        urlLink.href = peopleArray[j];
-        urlLink.alt = peopleArray[j];
-        urlLink.innerHTML = peopleArray[j];
+        urlLink.href = peopleArray[j].replace("http://", "https://");
+        urlLink.alt = peopleArray[j].replace("http://", "https://");
+        urlLink.innerHTML = peopleArray[j].replace("http://", "https://");
         // urlLink.target = "_blank";
         urlLink.addEventListener('click', loadDetailsModal);
 
@@ -1287,7 +1287,7 @@ function displayVehicles(jsonData){
       // let nameP = document.createElement("p");
       // nameP.innerHTML = "<strong>" + results[i].name + "</strong>";
       let nameLink = document.createElement("a");
-      nameLink.href = results[i].url;
+      nameLink.href = results[i].url.replace("http://", "https://");
       nameLink.alt = results[i].name;
       nameLink.innerHTML = results[i].name;
       // nameLink.target = "_blank";
@@ -1331,11 +1331,11 @@ function displayVehicles(jsonData){
       let filmsP = document.createElement("p");
       filmsP.innerHTML = "Films: ";
       for (let j = 0; j < filmsArray.length; j++) {
-        // filmsP.innerHTML += filmsArray[j];
+        // filmsP.innerHTML += filmsArray[j].replace("http://", "https://");
         let urlLink = document.createElement("a");
-        urlLink.href = filmsArray[j];
-        urlLink.alt = filmsArray[j];
-        urlLink.innerHTML = filmsArray[j];
+        urlLink.href = filmsArray[j].replace("http://", "https://");
+        urlLink.alt = filmsArray[j].replace("http://", "https://");
+        urlLink.innerHTML = filmsArray[j].replace("http://", "https://");
         // urlLink.target = "_blank";
         urlLink.addEventListener('click', loadDetailsModal);
 
@@ -1353,11 +1353,11 @@ function displayVehicles(jsonData){
       let pilotsP = document.createElement("p");
       pilotsP.innerHTML = "Pilots: ";
       for (let j = 0; j < pilotsArray.length; j++) {
-        // pilotsP.innerHTML += pilotsArray[j];
+        // pilotsP.innerHTML += pilotsArray[j].replace("http://", "https://");
         let urlLink = document.createElement("a");
-        urlLink.href = pilotsArray[j];
-        urlLink.alt = pilotsArray[j];
-        urlLink.innerHTML = pilotsArray[j];
+        urlLink.href = pilotsArray[j].replace("http://", "https://");
+        urlLink.alt = pilotsArray[j].replace("http://", "https://");
+        urlLink.innerHTML = pilotsArray[j].replace("http://", "https://");
         // urlLink.target = "_blank";
         urlLink.addEventListener('click', loadDetailsModal);
 
@@ -1592,11 +1592,11 @@ function displayFilmsModal(jsonData){
   let charactersP = document.createElement("p");
   charactersP.innerHTML = "Characters: ";
   for (let j = 0; j < charactersArray.length; j++) {
-    // charactersP.innerHTML += charactersArray[j];
+    // charactersP.innerHTML += charactersArray[j].replace("http://", "https://");
     let urlLink = document.createElement("a");
-    urlLink.href = charactersArray[j];
-    urlLink.alt = charactersArray[j];
-    urlLink.innerHTML = charactersArray[j];
+    urlLink.href = charactersArray[j].replace("http://", "https://");
+    urlLink.alt = charactersArray[j].replace("http://", "https://");
+    urlLink.innerHTML = charactersArray[j].replace("http://", "https://");
     // urlLink.target = "_blank";
     urlLink.addEventListener('click', loadDetailsModal);
 
@@ -1614,11 +1614,11 @@ function displayFilmsModal(jsonData){
   let planetsP = document.createElement("p");
   planetsP.innerHTML = "Planets: ";
   for (let j = 0; j < planetsArray.length; j++) {
-    // planetsP.innerHTML += planetsArray[j];
+    // planetsP.innerHTML += planetsArray[j].replace("http://", "https://");
     let urlLink = document.createElement("a");
-    urlLink.href = planetsArray[j];
-    urlLink.alt = planetsArray[j];
-    urlLink.innerHTML = planetsArray[j];
+    urlLink.href = planetsArray[j].replace("http://", "https://");
+    urlLink.alt = planetsArray[j].replace("http://", "https://");
+    urlLink.innerHTML = planetsArray[j].replace("http://", "https://");
     // urlLink.target = "_blank";
     urlLink.addEventListener('click', loadDetailsModal);
 
@@ -1636,11 +1636,11 @@ function displayFilmsModal(jsonData){
   let speciesP = document.createElement("p");
   speciesP.innerHTML = "Species: ";
   for (let j = 0; j < speciesArray.length; j++) {
-    // speciesP.innerHTML += speciesArray[j];
+    // speciesP.innerHTML += speciesArray[j].replace("http://", "https://");
     let urlLink = document.createElement("a");
-    urlLink.href = speciesArray[j];
-    urlLink.alt = speciesArray[j];
-    urlLink.innerHTML = speciesArray[j];
+    urlLink.href = speciesArray[j].replace("http://", "https://");
+    urlLink.alt = speciesArray[j].replace("http://", "https://");
+    urlLink.innerHTML = speciesArray[j].replace("http://", "https://");
     // urlLink.target = "_blank";
     urlLink.addEventListener('click', loadDetailsModal);
 
@@ -1658,11 +1658,11 @@ function displayFilmsModal(jsonData){
   let starshipsP = document.createElement("p");
   starshipsP.innerHTML = "Starships: ";
   for (let j = 0; j < starshipsArray.length; j++) {
-    // starshipsP.innerHTML += starshipsArray[j];
+    // starshipsP.innerHTML += starshipsArray[j].replace("http://", "https://");
     let urlLink = document.createElement("a");
-    urlLink.href = starshipsArray[j];
-    urlLink.alt = starshipsArray[j];
-    urlLink.innerHTML = starshipsArray[j];
+    urlLink.href = starshipsArray[j].replace("http://", "https://");
+    urlLink.alt = starshipsArray[j].replace("http://", "https://");
+    urlLink.innerHTML = starshipsArray[j].replace("http://", "https://");
     // urlLink.target = "_blank";
     urlLink.addEventListener('click', loadDetailsModal);
 
@@ -1680,11 +1680,11 @@ function displayFilmsModal(jsonData){
   let vehiclesP = document.createElement("p");
   vehiclesP.innerHTML = "Vehicles: ";
   for (let j = 0; j < vehiclesArray.length; j++) {
-    // vehiclesP.innerHTML += vehiclesArray[j];
+    // vehiclesP.innerHTML += vehiclesArray[j].replace("http://", "https://");
     let urlLink = document.createElement("a");
-    urlLink.href = vehiclesArray[j];
-    urlLink.alt = vehiclesArray[j];
-    urlLink.innerHTML = vehiclesArray[j];
+    urlLink.href = vehiclesArray[j].replace("http://", "https://");
+    urlLink.alt = vehiclesArray[j].replace("http://", "https://");
+    urlLink.innerHTML = vehiclesArray[j].replace("http://", "https://");
     // urlLink.target = "_blank";
     urlLink.addEventListener('click', loadDetailsModal);
 
@@ -1748,19 +1748,26 @@ function displayPeopleModal(jsonData){
   let skinColorP = document.createElement("p");
   skinColorP.innerHTML = "Skin Color: " + results.skin_color;
 
-  let homeworldP = document.createElement("p");
-  homeworldP.innerHTML = "Homeworld: " + results.homeworld;
+   let homeworldP = document.createElement("p");
+  homeworldP.innerHTML = "Homeworld: "; // + results.homeworld;
+  let homeworldLink = document.createElement("a");
+  homeworldLink.href = results.homeworld.replace("http://", "https://");
+  homeworldLink.alt = results.homeworld.replace("http://", "https://");
+  homeworldLink.innerHTML = results.homeworld.replace("http://", "https://");
+  // homeworldLink.target = "_blank";
+  homeworldLink.addEventListener('click', loadDetailsModal);
+  homeworldP.appendChild(homeworldLink);
 
 
   let filmsArray = results.films;
   let filmsP = document.createElement("p");
   filmsP.innerHTML = "Films: ";
   for (let j = 0; j < filmsArray.length; j++) {
-    // filmsP.innerHTML += filmsArray[j];
+    // filmsP.innerHTML += filmsArray[j].replace("http://", "https://");
     let urlLink = document.createElement("a");
-    urlLink.href = filmsArray[j];
-    urlLink.alt = filmsArray[j];
-    urlLink.innerHTML = filmsArray[j];
+    urlLink.href = filmsArray[j].replace("http://", "https://");
+    urlLink.alt = filmsArray[j].replace("http://", "https://");
+    urlLink.innerHTML = filmsArray[j].replace("http://", "https://");
     // urlLink.target = "_blank";
     urlLink.addEventListener('click', loadDetailsModal);
 
@@ -1778,11 +1785,11 @@ function displayPeopleModal(jsonData){
   let starshipsP = document.createElement("p");
   starshipsP.innerHTML = "Starships: ";
   for (let j = 0; j < starshipsArray.length; j++) {
-    // starshipsP.innerHTML += starshipsArray[j];
+    // starshipsP.innerHTML += starshipsArray[j].replace("http://", "https://");
     let urlLink = document.createElement("a");
-    urlLink.href = starshipsArray[j];
-    urlLink.alt = starshipsArray[j];
-    urlLink.innerHTML = starshipsArray[j];
+    urlLink.href = starshipsArray[j].replace("http://", "https://");
+    urlLink.alt = starshipsArray[j].replace("http://", "https://");
+    urlLink.innerHTML = starshipsArray[j].replace("http://", "https://");
     // urlLink.target = "_blank";
     urlLink.addEventListener('click', loadDetailsModal);
 
@@ -1800,11 +1807,11 @@ function displayPeopleModal(jsonData){
   let vehiclesP = document.createElement("p");
   vehiclesP.innerHTML = "Vehicles: ";
   for (let j = 0; j < vehiclesArray.length; j++) {
-    // vehiclesP.innerHTML += vehiclesArray[j];
+    // vehiclesP.innerHTML += vehiclesArray[j].replace("http://", "https://");
     let urlLink = document.createElement("a");
-    urlLink.href = vehiclesArray[j];
-    urlLink.alt = vehiclesArray[j];
-    urlLink.innerHTML = vehiclesArray[j];
+    urlLink.href = vehiclesArray[j].replace("http://", "https://");
+    urlLink.alt = vehiclesArray[j].replace("http://", "https://");
+    urlLink.innerHTML = vehiclesArray[j].replace("http://", "https://");
     // urlLink.target = "_blank";
     urlLink.addEventListener('click', loadDetailsModal);
 
@@ -1876,11 +1883,11 @@ function displayPlanetsModal(jsonData){
   let filmsP = document.createElement("p");
   filmsP.innerHTML = "Films: ";
   for (let j = 0; j < filmsArray.length; j++) {
-    // filmsP.innerHTML += filmsArray[j];
+    // filmsP.innerHTML += filmsArray[j].replace("http://", "https://");
     let urlLink = document.createElement("a");
-    urlLink.href = filmsArray[j];
-    urlLink.alt = filmsArray[j];
-    urlLink.innerHTML = filmsArray[j];
+    urlLink.href = filmsArray[j].replace("http://", "https://");
+    urlLink.alt = filmsArray[j].replace("http://", "https://");
+    urlLink.innerHTML = filmsArray[j].replace("http://", "https://");
     // urlLink.target = "_blank";
     urlLink.addEventListener('click', loadDetailsModal);
 
@@ -1898,11 +1905,11 @@ function displayPlanetsModal(jsonData){
   let residentsP = document.createElement("p");
   residentsP.innerHTML = "Residents: ";
   for (let j = 0; j < residentsArray.length; j++) {
-    // residentsP.innerHTML += residentsArray[j];
+    // residentsP.innerHTML += residentsArray[j].replace("http://", "https://");
     let urlLink = document.createElement("a");
-    urlLink.href = residentsArray[j];
-    urlLink.alt = residentsArray[j];
-    urlLink.innerHTML = residentsArray[j];
+    urlLink.href = residentsArray[j].replace("http://", "https://");
+    urlLink.alt = residentsArray[j].replace("http://", "https://");
+    urlLink.innerHTML = residentsArray[j].replace("http://", "https://");
     // urlLink.target = "_blank";
     urlLink.addEventListener('click', loadDetailsModal);
 
@@ -1988,11 +1995,11 @@ function displayStarshipsModal(jsonData){
   let filmsP = document.createElement("p");
   filmsP.innerHTML = "Films: ";
   for (let j = 0; j < filmsArray.length; j++) {
-    // filmsP.innerHTML += filmsArray[j];
+    // filmsP.innerHTML += filmsArray[j].replace("http://", "https://");
     let urlLink = document.createElement("a");
-    urlLink.href = filmsArray[j];
-    urlLink.alt = filmsArray[j];
-    urlLink.innerHTML = filmsArray[j];
+    urlLink.href = filmsArray[j].replace("http://", "https://");
+    urlLink.alt = filmsArray[j].replace("http://", "https://");
+    urlLink.innerHTML = filmsArray[j].replace("http://", "https://");
     // urlLink.target = "_blank";
     urlLink.addEventListener('click', loadDetailsModal);
 
@@ -2010,11 +2017,11 @@ function displayStarshipsModal(jsonData){
   let pilotsP = document.createElement("p");
   pilotsP.innerHTML = "Pilots: ";
   for (let j = 0; j < pilotsArray.length; j++) {
-    // pilotsP.innerHTML += pilotsArray[j];
+    // pilotsP.innerHTML += pilotsArray[j].replace("http://", "https://");
     let urlLink = document.createElement("a");
-    urlLink.href = pilotsArray[j];
-    urlLink.alt = pilotsArray[j];
-    urlLink.innerHTML = pilotsArray[j];
+    urlLink.href = pilotsArray[j].replace("http://", "https://");
+    urlLink.alt = pilotsArray[j].replace("http://", "https://");
+    urlLink.innerHTML = pilotsArray[j].replace("http://", "https://");
     // urlLink.target = "_blank";
     urlLink.addEventListener('click', loadDetailsModal);
 
@@ -2093,11 +2100,11 @@ function displaySpeciesModal(jsonData){
   let filmsP = document.createElement("p");
   filmsP.innerHTML = "Films: ";
   for (let j = 0; j < filmsArray.length; j++) {
-    // filmsP.innerHTML += filmsArray[j];
+    // filmsP.innerHTML += filmsArray[j].replace("http://", "https://");
     let urlLink = document.createElement("a");
-    urlLink.href = filmsArray[j];
-    urlLink.alt = filmsArray[j];
-    urlLink.innerHTML = filmsArray[j];
+    urlLink.href = filmsArray[j].replace("http://", "https://");
+    urlLink.alt = filmsArray[j].replace("http://", "https://");
+    urlLink.innerHTML = filmsArray[j].replace("http://", "https://");
     // urlLink.target = "_blank";
     urlLink.addEventListener('click', loadDetailsModal);
 
@@ -2115,11 +2122,11 @@ function displaySpeciesModal(jsonData){
   let peopleP = document.createElement("p");
   peopleP.innerHTML = "People: ";
   for (let j = 0; j < peopleArray.length; j++) {
-    // peopleP.innerHTML += peopleArray[j];
+    // peopleP.innerHTML += peopleArray[j].replace("http://", "https://");
     let urlLink = document.createElement("a");
-    urlLink.href = peopleArray[j];
-    urlLink.alt = peopleArray[j];
-    urlLink.innerHTML = peopleArray[j];
+    urlLink.href = peopleArray[j].replace("http://", "https://");
+    urlLink.alt = peopleArray[j].replace("http://", "https://");
+    urlLink.innerHTML = peopleArray[j].replace("http://", "https://");
     // urlLink.target = "_blank";
     urlLink.addEventListener('click', loadDetailsModal);
 
@@ -2201,11 +2208,11 @@ function displayVehiclesModal(jsonData){
   let filmsP = document.createElement("p");
   filmsP.innerHTML = "Films: ";
   for (let j = 0; j < filmsArray.length; j++) {
-    // filmsP.innerHTML += filmsArray[j];
+    // filmsP.innerHTML += filmsArray[j].replace("http://", "https://");
     let urlLink = document.createElement("a");
-    urlLink.href = filmsArray[j];
-    urlLink.alt = filmsArray[j];
-    urlLink.innerHTML = filmsArray[j];
+    urlLink.href = filmsArray[j].replace("http://", "https://");
+    urlLink.alt = filmsArray[j].replace("http://", "https://");
+    urlLink.innerHTML = filmsArray[j].replace("http://", "https://");
     // urlLink.target = "_blank";
     urlLink.addEventListener('click', loadDetailsModal);
 
@@ -2223,11 +2230,11 @@ function displayVehiclesModal(jsonData){
   let pilotsP = document.createElement("p");
   pilotsP.innerHTML = "Pilots: ";
   for (let j = 0; j < pilotsArray.length; j++) {
-    // pilotsP.innerHTML += pilotsArray[j];
+    // pilotsP.innerHTML += pilotsArray[j].replace("http://", "https://");
     let urlLink = document.createElement("a");
-    urlLink.href = pilotsArray[j];
-    urlLink.alt = pilotsArray[j];
-    urlLink.innerHTML = pilotsArray[j];
+    urlLink.href = pilotsArray[j].replace("http://", "https://");
+    urlLink.alt = pilotsArray[j].replace("http://", "https://");
+    urlLink.innerHTML = pilotsArray[j].replace("http://", "https://");
     // urlLink.target = "_blank";
     urlLink.addEventListener('click', loadDetailsModal);
 
