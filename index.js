@@ -1511,8 +1511,9 @@ function loadDetailsModal(e){
   let detailURL = e.srcElement.href;
 
   let detailCategory = detailURL;
-  detailCategory = detailCategory.replace("https://swapi.dev/api/", "");
-  detailCategory = detailCategory.replace("http://swapi.dev/api/", "");
+  detailCategory = detailCategory.replace("http://", "https://");
+  detailCategory = detailCategory.replace(baseURL, "");
+  // detailCategory = detailCategory.replace("http://swapi.dev/api/", "");
   // detailCategory = detailCategory.substr(0,detailURL.lastIndexOf('/'));
   detailCategory = detailCategory.substr(0,detailCategory.indexOf('/'));
   console.log("detailCategory", detailCategory);
@@ -1565,6 +1566,7 @@ function displayFilmsModal(jsonData){
   };
 
   let results = jsonData;
+  // console.log(results);
 
   detailsModalTitle.innerHTML = "<strong>" + results.title + "</strong>";
 
